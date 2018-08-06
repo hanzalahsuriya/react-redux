@@ -1,12 +1,11 @@
 import * as type from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function courseReducer(state = initialState.courses, action) {
+export default function authorReducer(state = initialState.authors, action) {
   switch (action.type) {
-    case type.LoadCoursesSuccess:
-      return action.courses;
+    case type.LoadAuthorsSuccess:
+      return action.authors;
     default:
       return state;
   }
-
 }
