@@ -15,3 +15,23 @@ export function loadCourses() {
     }).catch(error => { throw error; });
   };
 }
+
+export function updateCourseSuccess(course) {
+  return { type: type.UpdateCoursesSuccess, course };
+}
+
+export function createCourseSucceess(course) {
+  return { type: type.CreateCoursesSuccess, course };
+}
+
+export function saveCourse(course) {
+  return (dispatch) => {
+    return courseApi.saveCourse(course).then(savedCourse => {
+      course.id
+        ? dispatch(updateCourseSuccess(savedCourse))
+        : dispatch(createCourseSucceess(savedCourse));
+      }).catch(error => {
+        throw(error);
+    });
+  };
+}
